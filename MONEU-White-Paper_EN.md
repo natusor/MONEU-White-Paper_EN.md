@@ -17,8 +17,14 @@ A Peer-to-Peer Electronic Cash System with Spending Secured by the physical entr
 14. Parameter summary
 15. Disclaimer
 ## 1. Introduction
-MONEU is a decentralized payment network built on SHA-256 proof of work. What sets it apart from other chains of this kind is resistance to attack by a quantum computer. Beyond that layer, MONEU uses methods proven in mature proof-of-work systems namely the UTXO model, Merkle trees and the choice of the heaviest chain.
-In a chain of this kind the right to spend is decided by the private-key signature alone. That is enough only as long as nobody can recover the private key from the public one. MONEU requires a second factor that a quantum computer cannot break. It's a one-time proof from a private file of physical randomness. The following chapters explain how this proof is made and how it works.
+MONEU is a decentralized payment network built on SHA-256 proof of work. What sets it apart is
+quantum resistance at the level of user transactions. Beyond that layer MONEU uses methods proven in
+mature proof-of-work systems namely the UTXO model, Merkle trees and the choice of the heaviest
+chain.
+In such blockchain systems the right to spend is decided solely by the private-key signature. That is
+enough only as long as nobody can recover the private key from the public one. MONEU requires a
+second factor that a quantum computer cannot break. It's a one-time proof from a private file of physical
+randomness. The following chapters explain how this proof is made and how it works.
 ## 2. The quantum threat
 Digital payment networks rely on elliptic curves for their security. On standard computers the link between a public key and a private key is strictly a one-way street. A quantum computer running Shor's algorithm, however, can recover the private key directly from the public one. Once an attacker takes a public key from an old transaction, they can recover the private key and sign a new transfer of the coins. To the network this transaction looks completely legitimate, so no node will reject it. In this way an attacker can steal the funds and take over the identity of the wallet. This is why MONEU protects wallet spending with a shield built on noise that is used only once.
 ## 3. The Noise-OTP shield
