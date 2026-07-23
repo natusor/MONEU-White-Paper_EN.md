@@ -26,7 +26,13 @@ enough only as long as nobody can recover the private key from the public one. M
 second factor that a quantum computer cannot break. It's a one-time proof from a private file of physical
 randomness. The following chapters explain how this proof is made and how it works.
 ## 2. The quantum threat
-Digital payment networks rely on elliptic curves for their security. On standard computers the link between a public key and a private key is strictly a one-way street. A quantum computer running Shor's algorithm, however, can recover the private key directly from the public one. Once an attacker takes a public key from an old transaction, they can recover the private key and sign a new transfer of the coins. To the network this transaction looks completely legitimate, so no node will reject it. In this way an attacker can steal the funds and take over the identity of the wallet. This is why MONEU protects wallet spending with a shield built on noise that is used only once.
+Digital payment networks rely on elliptic curves for their security. On standard computers the link
+between a public key and a private key is strictly a one-way street. A quantum computer running Shor's
+algorithm, however, can recover the private key directly from the public one. Once an attacker takes a
+public key from an old transaction, they can recover the private key and sign a new transfer of the coins.
+To the network this transaction looks completely legitimate, so no node will reject it. In this way an
+attacker can steal the funds and take over the identity of the wallet. This is why MONEU protects wallet
+spending with a shield built on noise that is used only once.
 ## 3. The Noise-OTP shield
 At the heart of this protection is the Noise-OTP mechanism. It is a one-time proof built from noise relying strictly on the SHA-256 hash function and a Merkle tree. Shor's algorithm only works where there is a structure of factoring or discrete logarithms, and because hash functions have no such structure Shor cannot attack them. Grover's algorithm gives only a small speed-up which SHA-256 easily absorbs through its length. The shield simply rests on what a quantum computer leaves untouched. So as chapter four describes each wallet creates a noise file from physical randomness measured on the owner's machine. That file is then split into 32-byte pieces, and each piece acts as a single leaf. Every leaf gets a commitment and from all these commitments a Merkle tree is built. Its root marked as KPS serves as the public identifier for the wallet's noise.
 To authorize a transfer the wallet reveals one leaf and its Merkle path to the KPS together with the link between that leaf and the specific transaction.
